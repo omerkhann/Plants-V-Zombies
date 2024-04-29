@@ -4,8 +4,7 @@ using namespace std;
 
 
 class Level {
-
-
-	//aaaaaaaa changed again
+	
+	Level* selfPtr;
 
 };  
