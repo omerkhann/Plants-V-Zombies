@@ -5,4 +5,7 @@ using namespace std;
 
 class Level {
 
+	PlantFactory* plantfact;
+	ZombieFactory* zombfact;
+
 };
