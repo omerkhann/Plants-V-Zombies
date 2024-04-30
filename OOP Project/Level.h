@@ -6,5 +6,4 @@ using namespace std;
 class Level {
 	
 	Level* selfPtr;
-
 };  

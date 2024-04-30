@@ -1,9 +1,10 @@
 #include <SFML/Graphics.hpp>
 #include <ctime>
+#include<vector>
+#include"Plants.h"
 //#include"../SFML/Images/"
 using namespace sf;
 using namespace std;
-
 
 
 //Drawing the background
@@ -66,6 +67,9 @@ int main()
 	
 	Clock clock;
 
+
+	Plant myPlant;
+
 	while (window.isOpen())
 	{
 		float time = clock.getElapsedTime().asMicroseconds();
@@ -86,6 +90,9 @@ int main()
 		createMap(window);
 
 		window.setSize(sf::Vector2u(550, 340));
+		myPlant.draw(window);
+		myPlant.setPosition(400, 170);
+
 		window.display();
 	}
 	return 0;
