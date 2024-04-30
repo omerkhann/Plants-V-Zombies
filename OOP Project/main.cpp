@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include<SFML/Audio.hpp>
 #include <ctime>
 #include<vector>
 #include"Plants.h"
@@ -64,11 +65,15 @@ int main()
 	}
 
 	Clock timeMoney;
-	
 	Clock clock;
 
-
 	Plant myPlant;
+
+	// Initializing Background Music.
+	sf::Music bgMusic;
+	bgMusic.openFromFile("C:/Users/DELL/source/repos/OOP Project/Audios/bgmusic.mp3");
+	bgMusic.play();
+	bgMusic.setVolume(50);
 
 	while (window.isOpen())
 	{
