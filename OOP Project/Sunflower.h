@@ -1,12 +1,13 @@
 #pragma once
 #include<iostream>
 #include"SFML/Graphics.hpp"
-#include"Plants.h"
+#include"Plant.h"
+#include"Sun.h"
 using namespace std;
 using namespace sf;
 
 
-//SunFlower "is-a" plant
+// SunFlower "is-a" plant
 class SunFlower : public Plant {
 
 private:
@@ -14,28 +15,29 @@ private:
 
 public:
 
-	//Constructor
+	// Constructor
 	SunFlower();
 
-	//No getters, setters needed. Cost is a constant. 
+	// No getters, setters needed. Cost is a constant. 
 
-	//Other Member Functions
-
-	void produceSun();
+	// Other Member Functions
+	void makeSun();
 	void destroySelf();
 	virtual void setPosition(float, float);
 	virtual void draw(RenderWindow&);
 };
 
-
-SunFlower::SunFlower() : plantPrice(100), Plant() {
+// Constructor
+SunFlower::SunFlower() : plantPrice(100), Plant() 
+{
 	if (!texture.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/SunFlower.png")) {
 		cerr << "Failed to load texture: " << "C:/Users/DELL/source/repos/OOP Project/Images/SunFlower.png" << endl;
 	}
 	plantSprite.setTexture(texture);
 }
 
-void SunFlower::produceSun() {
+// Other Member Functions
+void SunFlower::makeSun() {
 
 	return;
 }

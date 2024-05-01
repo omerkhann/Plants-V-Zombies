@@ -20,7 +20,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Plants.h">
+    <ClInclude Include="Plant.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PlantFactory.h">
@@ -29,10 +29,34 @@
     <ClInclude Include="Sunflower.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ShootingPlant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pea.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PeaShooter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Repeater.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SnowPeaShooter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CherryBomb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WallNut.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Level.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MainGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sun.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

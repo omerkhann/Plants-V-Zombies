@@ -7,8 +7,12 @@ using namespace sf;
 class Plant {
 
 protected:
+	
 	int plantHealth;
 	int numOfHits;
+
+	//const int plantPrice;
+
 	Sprite plantSprite;
 	Texture texture;
 		
@@ -17,10 +21,10 @@ public:
 	//Constructor
 	Plant();
 	
-
 	//Getters
 	int getPlantHealth();
 	int getNumHits();
+	int getPrice() const;
 
 	//Setters
 	void setPlantHealth(int);
@@ -33,16 +37,22 @@ public:
 };
 
 
-Plant::Plant() :plantHealth(100), numOfHits(0) {}
 
+Plant::Plant() :plantHealth(100), numOfHits(0) {}
 
 //Getters
 int Plant::getPlantHealth() {
 	return plantHealth;
 }
+
 int Plant::getNumHits() {
 	return numOfHits;
 }
+
+//int Plant::getPrice() const {
+//	return plantPrice;
+//}
+
 
 //Setters
 void Plant::setPlantHealth(int health) {

@@ -3,6 +3,10 @@
 #include <ctime>
 #include<vector>
 #include"Sunflower.h"
+#include"PeaShooter.h"
+#include"Repeater.h"
+#include"Plant.h"
+#include"Sun.h"
 //#include"../SFML/Images/"
 using namespace sf;
 using namespace std;
@@ -10,7 +14,7 @@ using namespace std;
 
 //Drawing the background
 void createBack(RenderWindow& window) {
-	//Drawing the background
+
 	Image map_image;
 	map_image.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/Frontyard.png");
 	Texture map;
@@ -19,6 +23,30 @@ void createBack(RenderWindow& window) {
 	s_map.setTexture(map);
 	s_map.setPosition(0, 0);
 	window.draw(s_map);
+
+
+	sf::Texture sFbuttonTex;
+	sf::Sprite sFbutton;
+	sFbuttonTex.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/img1.png");
+	sFbutton.setTexture(sFbuttonTex);
+	sFbutton.setPosition(0, 0)	;
+
+	sf::Texture peabuttontex;
+	sf::Sprite PSbutton;
+	peabuttontex.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/img1.png");
+	PSbutton.setTexture(peabuttontex);
+	PSbutton.setPosition(0, 68);
+
+	sf::Texture RPbuttontex;
+	sf::Sprite RPbutton;
+	RPbuttontex.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/img1.png");
+	RPbutton.setTexture(sFbuttonTex);
+	RPbutton.setPosition(0, 136);
+
+	window.draw(sFbutton);
+	window.draw(PSbutton);
+	window.draw(RPbutton);
+
 }
 
 //Drawing the map
@@ -49,7 +77,7 @@ bool createFirstScreen(RenderWindow& window, const Font& font) {
 	// Start button
 	Text startButton("Start Game", font, 50);
 	startButton.setFillColor(Color::Green);
-	startButton.setPosition(600, 300); // Adjust position based on your window size and preferences
+	startButton.setPosition(0, 0); // Adjust position based on your window size and preferences
 
 	window.draw(background);
 	window.draw(startButton);
@@ -129,7 +157,9 @@ int main()
 	Clock timeMoney;
 	Clock clock;
 
-	SunFlower myPlant;
+	SunFlower SunFlower;
+	PeaShooter a;
+	Sun sun;
 
 	//Initializing Background Music
 	sf::Music bgMusic;
@@ -156,9 +186,16 @@ int main()
 		createBack(window);
 		createMap(window);
 
-		window.setSize(sf::Vector2u(550, 340));
-		myPlant.draw(window);
-		myPlant.setPosition(400, 140);
+		//window.setSize(sf::Vector2u(550, 340));
+		window.setSize(sf::Vector2u(750, 540));
+		SunFlower.draw(window);
+		SunFlower.setPosition(400, 140);
+		
+		a.draw(window);
+		a.setPosition(500, 140);
+		
+		sun.draw(window);
+		sun.sunFall();
 
 		window.display();
 	}

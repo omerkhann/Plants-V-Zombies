@@ -1,11 +1,11 @@
 #pragma once
 #include<iostream>
-#include"Plants.h"
+#include"SFML/Graphics.hpp"
+#include"Plant.h"
 using namespace std;
 
 class PlantFactory {
 
 private:
 	PlantFactory* plantMakerPtr;
-
 };
