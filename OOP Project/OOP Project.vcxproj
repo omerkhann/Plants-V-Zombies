@@ -146,6 +146,7 @@
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="PlantFactory.h" />
     <ClInclude Include="Plants.h" />
+    <ClInclude Include="Sunflower.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

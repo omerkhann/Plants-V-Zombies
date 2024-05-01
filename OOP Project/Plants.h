@@ -6,22 +6,48 @@ using namespace sf;
 
 class Plant {
 
+protected:
 	int plantHealth;
+	int numOfHits;
 	Sprite plantSprite;
 	Texture texture;
 		
 public:	
-	Plant():plantHealth(100){
-		if (!texture.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/sunflower.gif")) {
-			std::cerr << "Failed to load texture: " << "C:/Users/DELL/source/repos/OOP Project/Images/sunflower.gif" << std::endl;
-		}
-		plantSprite.setTexture(texture);
-	}
-	
-	void setPosition(float x, float y) { plantSprite.setPosition(x, y); }
 
-	void draw(RenderWindow& window) {
-		window.draw(plantSprite);
-	}
+	//Constructor
+	Plant();
+	
+
+	//Getters
+	int getPlantHealth();
+	int getNumHits();
+
+	//Setters
+	void setPlantHealth(int);
+	void setNumHits(int);
+
+	//Other Member Functions
+	virtual void setPosition(float, float) = 0;
+	virtual void draw(RenderWindow&) = 0;
 
 };
+
+
+Plant::Plant() :plantHealth(100), numOfHits(0) {}
+
+
+//Getters
+int Plant::getPlantHealth() {
+	return plantHealth;
+}
+int Plant::getNumHits() {
+	return numOfHits;
+}
+
+//Setters
+void Plant::setPlantHealth(int health) {
+	plantHealth = health;
+}
+void Plant::setNumHits(int hits) {
+	numOfHits = hits;
+}

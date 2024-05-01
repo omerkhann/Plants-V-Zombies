@@ -2,7 +2,7 @@
 #include<SFML/Audio.hpp>
 #include <ctime>
 #include<vector>
-#include"Plants.h"
+#include"Sunflower.h"
 //#include"../SFML/Images/"
 using namespace sf;
 using namespace std;
@@ -35,6 +35,44 @@ void createMap(RenderWindow& window) {
 	window.draw(s_map);
 }
 
+
+bool createFirstScreen(RenderWindow& window, const Font& font) {
+	window.clear();
+
+	// Background for the menu
+	Texture texture;
+	if (!texture.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/firstscreen.png")) {
+		cerr << "Error loading first screen image" << endl;
+	}
+	Sprite background(texture);
+
+	// Start button
+	Text startButton("Start Game", font, 50);
+	startButton.setFillColor(Color::Green);
+	startButton.setPosition(600, 300); // Adjust position based on your window size and preferences
+
+	window.draw(background);
+	window.draw(startButton);
+	window.display();
+
+	Event event;
+	while (window.pollEvent(event)) {
+		if (event.type == Event::Closed)
+			window.close();
+		if (event.type == Event::MouseButtonPressed) {
+			if (event.mouseButton.button == Mouse::Left) {
+				Vector2i mousePos = Mouse::getPosition(window);
+				if (startButton.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
+					return true;  // Start the game if the button is clicked
+				}
+			}
+		}
+	}
+
+	return false;
+}
+
+
 int main()
 {
 	//Create a window, n*n
@@ -64,12 +102,36 @@ int main()
     		}
 	}
 
+
+	// Load font
+	Font font;
+	if (!font.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Fonts/arial.otf")) {
+		cerr << "Failed to load font" << endl;
+		return 1;
+	}
+
+	// Initializing Background Music.
+	sf::Music Music;
+	Music.openFromFile("C:/Users/DELL/source/repos/OOP Project/Audios/bgmusic2.mp3");
+	Music.play();
+	Music.setVolume(50);
+
+
+	// Display the first screen and wait for the user to start the game
+	bool startGame = false;
+	while (!startGame && window.isOpen()) {
+		startGame = createFirstScreen(window, font);
+		sf::sleep(sf::milliseconds(100)); // Sleep to reduce CPU usage
+	}
+
+	Music.stop();
+
 	Clock timeMoney;
 	Clock clock;
 
-	Plant myPlant;
+	SunFlower myPlant;
 
-	// Initializing Background Music.
+	//Initializing Background Music
 	sf::Music bgMusic;
 	bgMusic.openFromFile("C:/Users/DELL/source/repos/OOP Project/Audios/bgmusic.mp3");
 	bgMusic.play();
@@ -96,7 +158,7 @@ int main()
 
 		window.setSize(sf::Vector2u(550, 340));
 		myPlant.draw(window);
-		myPlant.setPosition(400, 170);
+		myPlant.setPosition(400, 140);
 
 		window.display();
 	}
