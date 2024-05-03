@@ -18,7 +18,8 @@ public:
 	// Constructor
 	SunFlower();
 
-	// No getters, setters needed. Cost is a constant. 
+	// Getter
+	int getPlantPrice();
 
 	// Other Member Functions
 	void makeSun();
@@ -34,6 +35,11 @@ SunFlower::SunFlower() : plantPrice(100), Plant()
 		cerr << "Failed to load texture: " << "C:/Users/DELL/source/repos/OOP Project/Images/SunFlower.png" << endl;
 	}
 	plantSprite.setTexture(texture);
+}
+
+// Getter
+int SunFlower::getPlantPrice() {
+	return plantPrice;
 }
 
 // Other Member Functions

@@ -33,13 +33,13 @@ void createBack(RenderWindow& window) {
 
 	sf::Texture peabuttontex;
 	sf::Sprite PSbutton;
-	peabuttontex.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/img1.png");
+	peabuttontex.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/img3.png");
 	PSbutton.setTexture(peabuttontex);
 	PSbutton.setPosition(0, 68);
 
 	sf::Texture RPbuttontex;
 	sf::Sprite RPbutton;
-	RPbuttontex.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/img1.png");
+	RPbuttontex.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/img4.png");
 	RPbutton.setTexture(sFbuttonTex);
 	RPbutton.setPosition(0, 136);
 
@@ -63,7 +63,7 @@ void createMap(RenderWindow& window) {
 	window.draw(s_map);
 }
 
-
+/*
 bool createFirstScreen(RenderWindow& window, const Font& font) {
 	window.clear();
 
@@ -98,7 +98,52 @@ bool createFirstScreen(RenderWindow& window, const Font& font) {
 	}
 
 	return false;
+}*/
+
+
+bool createMenuScreen(RenderWindow& window, const Font& font) {
+	window.clear();
+
+	// Background for the menu
+	Texture texture;
+	if (!texture.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/firstscreen.png")) {
+		cerr << "Error loading first screen image" << endl;
+	}
+	Sprite background(texture);
+
+	// Start button
+	Text startButton("Start Game", font, 50);
+	startButton.setFillColor(Color::Green);
+	startButton.setPosition(0, 0); // Adjust position based on your window size and preferences
+
+	window.draw(background);
+	window.draw(startButton);
+	window.display();
+
+	// Calculate the text size manually
+	string buttonText = startButton.getString();
+	float buttonWidth = buttonText.length() * startButton.getCharacterSize() * 0.6; // Approximation
+	float buttonHeight = startButton.getCharacterSize() * 1.2; // Approximation
+
+	Event event;
+	while (window.pollEvent(event)) {
+		if (event.type == Event::Closed)
+			window.close();
+		if (event.type == Event::MouseButtonPressed) {
+			if (event.mouseButton.button == Mouse::Left) {
+				Vector2i mousePos = Mouse::getPosition(window);
+				// Manually checking if the click is within the bounds of the start button
+				if (mousePos.x >= startButton.getPosition().x && mousePos.x <= startButton.getPosition().x + buttonWidth &&
+					mousePos.y >= startButton.getPosition().y && mousePos.y <= startButton.getPosition().y + buttonHeight) {
+					return true;  // Start the game if the button is clicked
+				}
+			}
+		}
+	}
+
+	return false;
 }
+
 
 
 int main()
@@ -148,7 +193,7 @@ int main()
 	// Display the first screen and wait for the user to start the game
 	bool startGame = false;
 	while (!startGame && window.isOpen()) {
-		startGame = createFirstScreen(window, font);
+		startGame = createMenuScreen(window, font);
 		sf::sleep(sf::milliseconds(100)); // Sleep to reduce CPU usage
 	}
 
@@ -185,14 +230,17 @@ int main()
 		//Create a background
 		createBack(window);
 		createMap(window);
-
 		//window.setSize(sf::Vector2u(550, 340));
-		window.setSize(sf::Vector2u(750, 540));
+		//window.setSize(sf::Vector2u(750, 540));
+		window.setSize(sf::Vector2u(1200, 700));
+		
+		
 		SunFlower.draw(window);
 		SunFlower.setPosition(400, 140);
 		
 		a.draw(window);
 		a.setPosition(500, 140);
+		a.shootPea(window);
 		
 		sun.draw(window);
 		sun.sunFall();

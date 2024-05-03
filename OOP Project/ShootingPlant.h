@@ -14,10 +14,12 @@ protected:
 public:
 
 	// Constructor
-	//ShootingPlant();
+	ShootingPlant();
 	
 	// Other Member Functions
-	//virtual void shootPea() = 0;
+	virtual void shootPea(RenderWindow&) = 0;
 
 };
 
+
+ShootingPlant::ShootingPlant() : Plant() {}

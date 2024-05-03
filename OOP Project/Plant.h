@@ -1,4 +1,4 @@
-#pragma once
+ #pragma once
 #include<iostream>
 #include"SFML/Graphics.hpp"
 using namespace std;
@@ -10,8 +10,10 @@ protected:
 	
 	int plantHealth;
 	int numOfHits;
+	const int plantPrice;
 
-	//const int plantPrice;
+	float posX;
+	float posY;
 
 	Sprite plantSprite;
 	Texture texture;
@@ -20,6 +22,7 @@ public:
 
 	//Constructor
 	Plant();
+	Plant(int);
 	
 	//Getters
 	int getPlantHealth();
@@ -37,10 +40,12 @@ public:
 };
 
 
+// Constructors
+Plant::Plant() :plantHealth(100), numOfHits(0), plantPrice(0), posX(0), posY(0) {}
 
-Plant::Plant() :plantHealth(100), numOfHits(0) {}
+Plant::Plant(int price) : plantHealth(100), plantPrice(price), numOfHits(0), posX(0), posY(0) {}
 
-//Getters
+// Getters
 int Plant::getPlantHealth() {
 	return plantHealth;
 }
@@ -49,10 +54,9 @@ int Plant::getNumHits() {
 	return numOfHits;
 }
 
-//int Plant::getPrice() const {
-//	return plantPrice;
-//}
-
+int Plant::getPrice() const {
+	return plantPrice;
+}
 
 //Setters
 void Plant::setPlantHealth(int health) {

@@ -1,5 +1,6 @@
 #pragma once
 #include"ShootingPlant.h"
+#include"Pea.h"
 
 
 class PeaShooter : public ShootingPlant {
@@ -15,6 +16,7 @@ public:
 	// Other Member Functions
 	virtual void setPosition(float, float);
 	virtual void draw(RenderWindow&);
+	virtual void shootPea(RenderWindow&);
 };
 
 
@@ -27,9 +29,17 @@ PeaShooter::PeaShooter():plantPrice(100), ShootingPlant()
 }
 
 void PeaShooter::setPosition(float x, float y) {
+	posX = x;
+	posY = y;
 	plantSprite.setPosition(x, y);
 }
 
 void PeaShooter::draw(RenderWindow& window) {
 	window.draw(plantSprite);
+}
+
+void PeaShooter::shootPea(RenderWindow& window) {
+	Pea pea(posX, posY);
+	pea.draw(window);
+	pea.movePea();
 }

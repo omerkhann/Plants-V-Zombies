@@ -36,7 +36,7 @@ public:
 };
 
 
-Sun::Sun() :fallSpeed(10.0f), posX(300), posY(-100), limitCheck(false), collected(false) {
+Sun::Sun() :fallSpeed(20.0f), posX(300), posY(-100), limitCheck(false), collected(false) {
 	if (!sunTex.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/sun.png")) {
 		cerr << "Failed to load texture: " << "C:/Users/DELL/source/repos/OOP Project/Images/sun.png" << endl;
 	}

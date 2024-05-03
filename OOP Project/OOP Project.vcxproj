@@ -143,8 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CherryBomb.h" />
-    <ClInclude Include="Level.h" />
-    <ClInclude Include="MainGame.h" />
+    <ClInclude Include="Inventory.h" />
     <ClInclude Include="Pea.h" />
     <ClInclude Include="PeaShooter.h" />
     <ClInclude Include="PlantFactory.h" />
