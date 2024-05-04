@@ -6,7 +6,7 @@
 class PeaShooter : public ShootingPlant {
 
 private:
-	const int plantPrice;
+	//const int plantPrice;
 
 public:
 	
@@ -20,7 +20,7 @@ public:
 };
 
 
-PeaShooter::PeaShooter():plantPrice(100), ShootingPlant() 
+PeaShooter::PeaShooter(): ShootingPlant(100) 
 {
 	if (!texture.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/peashooter.gif")) {
 		cerr << "Failed to load texture: " << "C:/Users/DELL/source/repos/OOP Project/Images/peashooter.gif" << endl;

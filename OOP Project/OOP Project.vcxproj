@@ -144,6 +144,7 @@
   <ItemGroup>
     <ClInclude Include="CherryBomb.h" />
     <ClInclude Include="Inventory.h" />
+    <ClInclude Include="Lawnmower.h" />
     <ClInclude Include="Pea.h" />
     <ClInclude Include="PeaShooter.h" />
     <ClInclude Include="PlantFactory.h" />

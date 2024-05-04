@@ -5,7 +5,7 @@
 class Repeater : public ShootingPlant {
 
 private:
-	const int plantPrice;
+	//const int plantPrice;
 
 public:
 
@@ -21,7 +21,7 @@ public:
 	virtual void shootPea(RenderWindow&);
 };
 
-Repeater::Repeater(RenderWindow& window):plantPrice(200), ShootingPlant()
+Repeater::Repeater(RenderWindow& window): ShootingPlant(200)
 {
 	if (!texture.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/repeater.gif")) {
 		cerr << "Failed to load texture: " << "C:/Users/DELL/source/repos/OOP Project/Images/repeater.gif" << endl;
@@ -42,6 +42,12 @@ void Repeater::draw(RenderWindow& window) {
 	window.draw(plantSprite);
 }
 
+//void Repeater::shootPea(RenderWindow& window) {
+//	Pea pea(posX,posY);
+//}
+
 void Repeater::shootPea(RenderWindow& window) {
-	Pea pea(posX,posY);
+	Pea pea(posX, posY);
+	pea.draw(window);
+	pea.movePea();
 }

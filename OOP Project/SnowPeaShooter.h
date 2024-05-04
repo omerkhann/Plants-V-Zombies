@@ -11,12 +11,12 @@ public:
 	// Other Member Functions
 	virtual void setPosition(float, float);
 	virtual void draw(RenderWindow&);
-
+	//virtual void shootPea(RenderWindow&);
 };
 
 
 
-SnowPeaShooter::SnowPeaShooter():plantPrice(100), ShootingPlant()
+SnowPeaShooter::SnowPeaShooter(): ShootingPlant(200)
 {
 	if (!texture.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/peashooter.png")) {
 		cerr << "Failed to load texture: " << "C:/Users/DELL/source/repos/OOP Project/Images/peashooter.png" << endl;

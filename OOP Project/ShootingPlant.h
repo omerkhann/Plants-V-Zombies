@@ -15,6 +15,7 @@ public:
 
 	// Constructor
 	ShootingPlant();
+	ShootingPlant(int);
 	
 	// Other Member Functions
 	virtual void shootPea(RenderWindow&) = 0;
@@ -23,3 +24,4 @@ public:
 
 
 ShootingPlant::ShootingPlant() : Plant() {}
+ShootingPlant::ShootingPlant(int price):Plant(price){}

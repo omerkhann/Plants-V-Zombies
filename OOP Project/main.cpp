@@ -7,12 +7,24 @@
 #include"Repeater.h"
 #include"Plant.h"
 #include"Sun.h"
-//#include"../SFML/Images/"
+#include"Lawnmower.h"
+
 using namespace sf;
 using namespace std;
 
 
-//Drawing the background
+struct coordinates {
+	float x;
+	float y;
+
+	coordinates convertToCoordinates(const Vector2i& vec) {
+		return { static_cast<float>(vec.x), static_cast<float>(vec.y) };
+	}
+
+};
+
+
+// Drawing the background
 void createBack(RenderWindow& window) {
 
 	Image map_image;
@@ -49,7 +61,7 @@ void createBack(RenderWindow& window) {
 
 }
 
-//Drawing the map
+// Drawing the map
 void createMap(RenderWindow& window) {
 	//Drawing a map
 	Image map_image;
@@ -63,64 +75,27 @@ void createMap(RenderWindow& window) {
 	window.draw(s_map);
 }
 
-/*
-bool createFirstScreen(RenderWindow& window, const Font& font) {
-	window.clear();
-
-	// Background for the menu
-	Texture texture;
-	if (!texture.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/firstscreen.png")) {
-		cerr << "Error loading first screen image" << endl;
-	}
-	Sprite background(texture);
-
-	// Start button
-	Text startButton("Start Game", font, 50);
-	startButton.setFillColor(Color::Green);
-	startButton.setPosition(0, 0); // Adjust position based on your window size and preferences
-
-	window.draw(background);
-	window.draw(startButton);
-	window.display();
-
-	Event event;
-	while (window.pollEvent(event)) {
-		if (event.type == Event::Closed)
-			window.close();
-		if (event.type == Event::MouseButtonPressed) {
-			if (event.mouseButton.button == Mouse::Left) {
-				Vector2i mousePos = Mouse::getPosition(window);
-				if (startButton.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
-					return true;  // Start the game if the button is clicked
-				}
-			}
-		}
-	}
-
-	return false;
-}*/
-
-
+// Menu Screen Creation
 bool createMenuScreen(RenderWindow& window, const Font& font) {
 	window.clear();
 
-	// Background for the menu
+	// Load and display the menu background
 	Texture texture;
-	if (!texture.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/firstscreen.png")) {
+	if (!texture.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/menuscreen_edited.jpg")) {
 		cerr << "Error loading first screen image" << endl;
+		return false;
 	}
 	Sprite background(texture);
+	window.draw(background);
 
-	// Start button
+	// Setup and display the start button
 	Text startButton("Start Game", font, 50);
 	startButton.setFillColor(Color::Green);
-	startButton.setPosition(0, 0); // Adjust position based on your window size and preferences
-
-	window.draw(background);
+	startButton.setPosition(500, 500); // Adjust position based on your window size and preferences
 	window.draw(startButton);
 	window.display();
 
-	// Calculate the text size manually
+	// Manually calculate button dimensions
 	string buttonText = startButton.getString();
 	float buttonWidth = buttonText.length() * startButton.getCharacterSize() * 0.6; // Approximation
 	float buttonHeight = startButton.getCharacterSize() * 1.2; // Approximation
@@ -129,21 +104,18 @@ bool createMenuScreen(RenderWindow& window, const Font& font) {
 	while (window.pollEvent(event)) {
 		if (event.type == Event::Closed)
 			window.close();
-		if (event.type == Event::MouseButtonPressed) {
-			if (event.mouseButton.button == Mouse::Left) {
-				Vector2i mousePos = Mouse::getPosition(window);
-				// Manually checking if the click is within the bounds of the start button
-				if (mousePos.x >= startButton.getPosition().x && mousePos.x <= startButton.getPosition().x + buttonWidth &&
-					mousePos.y >= startButton.getPosition().y && mousePos.y <= startButton.getPosition().y + buttonHeight) {
-					return true;  // Start the game if the button is clicked
-				}
+		if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left) {
+			coordinates mousePos = mousePos.convertToCoordinates(Mouse::getPosition(window));
+			// Manually checking if the click is within the bounds of the start button
+			if (mousePos.x >= startButton.getPosition().x && mousePos.x <= startButton.getPosition().x + buttonWidth &&
+				mousePos.y >= startButton.getPosition().y && mousePos.y <= startButton.getPosition().y + buttonHeight) {
+				return true;  // Start the game if button clicked
 			}
 		}
 	}
 
 	return false;
 }
-
 
 
 int main()
@@ -206,6 +178,12 @@ int main()
 	PeaShooter a;
 	Sun sun;
 
+	LawnMower lawn1(300,140);
+	LawnMower lawn2(300, 240);
+	LawnMower lawn3(300, 340);
+	LawnMower lawn4(300, 440);
+	LawnMower lawn5(300, 540);
+
 	//Initializing Background Music
 	sf::Music bgMusic;
 	bgMusic.openFromFile("C:/Users/DELL/source/repos/OOP Project/Audios/bgmusic.mp3");
@@ -244,6 +222,14 @@ int main()
 		
 		sun.draw(window);
 		sun.sunFall();
+
+		lawn1.draw(window);
+		lawn2.draw(window);
+		lawn3.draw(window);
+		lawn4.draw(window);
+		lawn5.draw(window);
+
+		lawn1.move();
 
 		window.display();
 	}
