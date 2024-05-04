@@ -109,13 +109,18 @@ bool createMenuScreen(RenderWindow& window, const Font& font) {
 			// Manually checking if the click is within the bounds of the start button
 			if (mousePos.x >= startButton.getPosition().x && mousePos.x <= startButton.getPosition().x + buttonWidth &&
 				mousePos.y >= startButton.getPosition().y && mousePos.y <= startButton.getPosition().y + buttonHeight) {
-				return true;  // Start the game if button clicked
+				return true;  // Starts the game if button clicked
 			}
 		}
 	}
 
 	return false;
 }
+
+
+// bool createLevelOne()
+// bool createLevelTwo()
+// bool createLevelt
 
 
 int main()
@@ -215,7 +220,8 @@ int main()
 		
 		SunFlower.draw(window);
 		SunFlower.setPosition(400, 140);
-		
+		SunFlower.update(window);
+
 		a.draw(window);
 		a.setPosition(500, 140);
 		a.shootPea(window);

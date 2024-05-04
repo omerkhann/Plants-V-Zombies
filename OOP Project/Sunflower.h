@@ -11,25 +11,23 @@ using namespace sf;
 class SunFlower : public Plant {
 
 private:
-	const int plantPrice;
+	Clock sunProductionTime;
 
 public:
 
 	// Constructor
 	SunFlower();
 
-	// Getter
-	int getPlantPrice();
-
 	// Other Member Functions
-	void makeSun();
+	void makeSun(RenderWindow&);
 	void destroySelf();
+	void update(RenderWindow&);
 	virtual void setPosition(float, float);
 	virtual void draw(RenderWindow&);
 };
 
 // Constructor
-SunFlower::SunFlower() : plantPrice(100), Plant() 
+SunFlower::SunFlower() : Plant(100) 
 {
 	if (!texture.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/SunFlower.png")) {
 		cerr << "Failed to load texture: " << "C:/Users/DELL/source/repos/OOP Project/Images/SunFlower.png" << endl;
@@ -37,15 +35,19 @@ SunFlower::SunFlower() : plantPrice(100), Plant()
 	plantSprite.setTexture(texture);
 }
 
-// Getter
-int SunFlower::getPlantPrice() {
-	return plantPrice;
-}
 
 // Other Member Functions
-void SunFlower::makeSun() {
+void SunFlower::update(RenderWindow& window) {
+	if (sunProductionTime.getElapsedTime().asSeconds() >= 10) {
+		makeSun(window);
+		sunProductionTime.restart();
+	}
+}
 
-	return;
+void SunFlower::makeSun(RenderWindow& window) {
+
+	Sun producedSun(posX, posY);
+	producedSun.draw(window);
 }
 
 void SunFlower::destroySelf() {
@@ -53,6 +55,8 @@ void SunFlower::destroySelf() {
 }
 
 void SunFlower::setPosition(float x, float y) {
+	posX = x;
+	posY = y;
 	plantSprite.setPosition(x, y);
 }
 

@@ -16,7 +16,9 @@ public:
 	// Other Member Functions
 	virtual void setPosition(float, float);
 	virtual void draw(RenderWindow&);
+	
 	void explode();
+	//bool zombieCollisionCheck();
 };
 
 

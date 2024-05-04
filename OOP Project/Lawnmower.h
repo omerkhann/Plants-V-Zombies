@@ -29,7 +29,7 @@ public:
 	void setPosition(float, float);
 	void draw(RenderWindow&);
 	void move();
-	//bool zombieCollisionCheck();
+	//bool zombieCollisionCheck();   // AA BB COLLISION CHECK
 };
 
 

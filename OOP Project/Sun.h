@@ -1,5 +1,7 @@
 #pragma once
 #include<iostream>
+#include<ctime>
+#include<cstdlib>
 #include"SFML/Graphics.hpp"
 using namespace std;
 using namespace sf;
@@ -21,8 +23,9 @@ private:
 
 public:
 
-	// Constructor
+	// Constructors
 	Sun();
+	Sun(float, float);
 	
 	// Getters
 	// Setters
@@ -36,7 +39,8 @@ public:
 };
 
 
-Sun::Sun() :fallSpeed(20.0f), posX(300), posY(-100), limitCheck(false), collected(false) {
+// Default
+Sun::Sun() :fallSpeed(20.0f), posX(0), posY(-100), limitCheck(false), collected(false) {
 	if (!sunTex.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/sun.png")) {
 		cerr << "Failed to load texture: " << "C:/Users/DELL/source/repos/OOP Project/Images/sun.png" << endl;
 	}
@@ -45,8 +49,31 @@ Sun::Sun() :fallSpeed(20.0f), posX(300), posY(-100), limitCheck(false), collecte
 		sunSprite.setTexture(sunTex);
 		//sunSprite.setTextureRect(sunRect);
 		sunSprite.setPosition(posX, posY);
+
+
+		// Randomizing x-coord of each object
+		srand(time(0));
+		int min = 400;
+		int max = 1000;
+		int random_posX = min + rand()%(max - min + 1);
+		posX = random_posX;
+
 	}
 }
+
+// Parameterized
+Sun::Sun(float posx, float posy) :fallSpeed(0), posX(posx), posY(posy+35), limitCheck(false), collected(false) {
+	if (!sunTex.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/sun.png")) {
+		cerr << "Failed to load texture: " << "C:/Users/DELL/source/repos/OOP Project/Images/sun.png" << endl;
+	}
+	else {
+		sunSprite.setTexture(sunTex);
+		sunSprite.setPosition(posX, posY);
+	}
+}
+
+
+// Other Member Functions
 
 void Sun::draw(RenderWindow& window) {
 	if(!collected){
