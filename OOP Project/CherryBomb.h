@@ -22,7 +22,7 @@ public:
 };
 
 
-CherryBomb::CherryBomb(): Plant(100){
+CherryBomb::CherryBomb(): Plant(150){
 	if (!texture.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/wallnut.gif")) {
 		cerr << "Failed to load texture: " << "C:/Users/DELL/source/repos/OOP Project/Images/wallnut.gif" << endl;
 	}

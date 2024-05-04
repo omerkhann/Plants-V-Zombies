@@ -50,7 +50,7 @@ void PlantFactory::addPlant(Plant* plant) {
 }
 
 void PlantFactory::drawPlant(RenderWindow& window) {
-
+	return;
 }
 
 Plant* PlantFactory::operator[](int index) {

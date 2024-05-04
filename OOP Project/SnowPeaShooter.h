@@ -15,8 +15,7 @@ public:
 };
 
 
-
-SnowPeaShooter::SnowPeaShooter(): ShootingPlant(200)
+SnowPeaShooter::SnowPeaShooter(): ShootingPlant(150)
 {
 	if (!texture.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/peashooter.png")) {
 		cerr << "Failed to load texture: " << "C:/Users/DELL/source/repos/OOP Project/Images/peashooter.png" << endl;
