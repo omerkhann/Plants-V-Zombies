@@ -25,7 +25,7 @@ public:
 	void draw(RenderWindow&);
 };
 
-Pea::Pea(float posx, float posy):posX(posx + 50), posY(posy), moveSpeed(5) {
+Pea::Pea(float posx, float posy):posX(posx + 60), posY(posy+10), moveSpeed(5) {
 	if (!peaTex.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/pea.png")) {
 		cerr << "Failed to load texture: " << "C:/Users/DELL/source/repos/OOP Project/Images/pea.png" << endl;
 	}

@@ -50,7 +50,11 @@ void PlantFactory::addPlant(Plant* plant) {
 }
 
 void PlantFactory::drawPlant(RenderWindow& window) {
-	return;
+	for (int i = 0; i < current; ++i) {
+		if (ptr[i] != nullptr) {
+			ptr[i]->draw(window);
+		}
+	}
 }
 
 Plant* PlantFactory::operator[](int index) {

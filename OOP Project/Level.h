@@ -38,7 +38,11 @@ public:
 
 	// Other Member Functions
 	virtual void drawLevel(RenderWindow&) = 0; 
-	void handlePlantPlacement(RenderWindow&);
+	
+	virtual void handlePlantSelection(RenderWindow& window) = 0;
+	virtual void handlePlantPlacement(RenderWindow& window) = 0;
+	virtual void drawPlants(RenderWindow& window) { plantFactory.drawPlant(window); }
+
 	void drawLawnMowers(RenderWindow&);
 
 };
@@ -70,11 +74,11 @@ void Level::handlePlantPlacement(RenderWindow& window) {
 void Level::drawLawnMowers(RenderWindow& window) {
 	
 
-	LawnMower lawn1(300,140);
+	LawnMower lawn1(300,120);
 	LawnMower lawn2(300, 240);
 	LawnMower lawn3(300, 340);
-	LawnMower lawn4(300, 440);
-	LawnMower lawn5(300, 540);
+	LawnMower lawn4(300, 460);
+	LawnMower lawn5(300, 580);
 	
 	lawn1.draw(window);
 	lawn2.draw(window);

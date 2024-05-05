@@ -14,6 +14,8 @@ public:
 
 	// Other Member Functions
 	virtual void drawLevel(RenderWindow&);
+	virtual void handlePlantSelection(RenderWindow&);
+	virtual void handlePlantPlacement(RenderWindow&);
 };
 
 
@@ -32,24 +34,44 @@ void BeginnersGarden::drawLevel(RenderWindow& window) {
 
 	sf::Texture sFbuttonTex;
 	sf::Sprite sFbutton;
-	sFbuttonTex.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/img1.png");
+	sFbuttonTex.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/sunflowerCard.png");
 	sFbutton.setTexture(sFbuttonTex);
 	sFbutton.setPosition(0, 0);
 
 
 	sf::Texture peabuttontex;
 	sf::Sprite PSbutton;
-	peabuttontex.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/img3.png");
+	peabuttontex.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/peashooterCard.png");
 	PSbutton.setTexture(peabuttontex);
 	PSbutton.setPosition(0, 68);
 
-	sf::Texture RPbuttontex;
-	sf::Sprite RPbutton;
-	RPbuttontex.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/img3.png");
-	RPbutton.setTexture(RPbuttontex);
-	RPbutton.setPosition(0, 136);
 
 	window.draw(sFbutton);
 	window.draw(PSbutton);
-	window.draw(RPbutton);
+}
+
+
+void BeginnersGarden::handlePlantSelection(RenderWindow& window) {
+	Event event;
+	while (window.pollEvent(event)) {
+		if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left) {
+			coordinates mousePos = mousePos.convertToCoordinates(Mouse::getPosition(window));
+			// Example: Check if a specific plant button was clicked
+			// This is where you would check button dimensions
+			cout << "Plant type selected for placement" << endl;
+		}
+	}
+}
+
+void BeginnersGarden::handlePlantPlacement(RenderWindow& window) {
+	Event event;
+	while (window.pollEvent(event)) {
+		if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left) {
+			coordinates mousePos = mousePos.convertToCoordinates(Mouse::getPosition(window));
+			Plant* newPlant = new SunFlower();  // Assuming selection logic is handled
+			newPlant->setPosition(mousePos.x, mousePos.y);
+			plantFactory.addPlant(newPlant);
+			cout << "Plant placed at: " << mousePos.x << ", " << mousePos.y << endl;
+		}
+	}
 }

@@ -13,12 +13,10 @@ class MainGame {
 	
 private:
 	string playerName;
+	string selectedPlantType;
 	int playerLives;
 	Level* currLevel;
 	Scoreboard scoreBoard;
-	
-	//Clock sunClock;
-
 
 public:
 	
@@ -41,6 +39,10 @@ public:
 	bool createMenuScreen(RenderWindow& window, const Font& font);
 	void loadHighScores(RenderWindow&);
 	void loadInstructions(RenderWindow&);
+
+	//void handlePlantSelection(RenderWindow&);
+	//void handlePlantPlacement(RenderWindow&);
+
 
 	//void showScoreBoard(RenderWindow&)
 	//void loadEndScreen(RenderWindow&);
@@ -151,4 +153,40 @@ void MainGame::loadHighScores(RenderWindow& window) {
 void MainGame::loadInstructions(RenderWindow& window) {
 	return;
 }
+
+
+
+//// Handle clicking on plant buttons and prepare for placement
+//void MainGame::handlePlantSelection(RenderWindow& window) {
+//	Event event;
+//	while (window.pollEvent(event)) {
+//		if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left) {
+//			coordinates mousePos = mousePos.convertToCoordinates(Mouse::getPosition(window));
+//
+//			// Example positions, these should be actual positions and dimensions of buttons
+//			if (mousePos.x >= 0 && mousePos.x <= 100 && mousePos.y >= 0 && mousePos.y <= 50) {
+//				selectedPlantType = "SunFlower";
+//				cout << "SunFlower selected for placement" << endl;
+//				handlePlantPlacement(window);
+//			}
+//		}
+//	}
+//}
+//
+//// Handles the placement of a plant after selection
+//void MainGame::handlePlantPlacement(RenderWindow& window) {
+//	Event event;
+//	while (window.pollEvent(event)) {
+//		if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left) {
+//			coordinates mousePos = mousePos.convertToCoordinates(Mouse::getPosition(window));
+//			if (selectedPlantType == "SunFlower") {
+//				SunFlower* newSunflower = new SunFlower();
+//				newSunflower->setPosition(mousePos.x, mousePos.y);
+//				currLevel->getPlantFactory().addPlant(newSunflower); // Ensure PlantFactory is accessible
+//				cout << "SunFlower placed at " << mousePos.x << ", " << mousePos.y << endl;
+//				selectedPlantType = ""; // Reset selection
+//			}
+//		}
+//	}
+//}
 

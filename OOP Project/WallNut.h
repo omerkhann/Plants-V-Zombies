@@ -22,8 +22,8 @@ public:
 
 
 WallNut::WallNut() : Plant(50) {
-	if (!texture.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/wallnut.gif")) {
-		cerr << "Failed to load texture: " << "C:/Users/DELL/source/repos/OOP Project/Images/wallnut.gif" << endl;
+	if (!texture.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/wallnut.png")) {
+		cerr << "Failed to load texture: " << "C:/Users/DELL/source/repos/OOP Project/Images/wallnut.png" << endl;
 	}
 	plantSprite.setTexture(texture);
 }

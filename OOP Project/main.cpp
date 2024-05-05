@@ -99,23 +99,24 @@ int main()
 		}
 
 
-
+		game.getLvlPtr()->handlePlantSelection(window);
 		game.getLvlPtr()->drawLevel(window);
 		game.getLvlPtr()->drawLawnMowers(window);
+		game.getLvlPtr()->drawPlants(window);
 
 		//Create a background
-		game.createMap(window);
+		//game.createMap(window);
 		//window.setSize(sf::Vector2u(550, 340));
 		//window.setSize(sf::Vector2u(750, 540));
 		window.setSize(sf::Vector2u(1200, 700));
 		
 		
 		SunFlower.draw(window);
-		SunFlower.setPosition(400, 140);
+		SunFlower.setPosition(400, 200);
 		SunFlower.update(window);
 
 		a.draw(window);
-		a.setPosition(500, 140);
+		a.setPosition(480, 80);
 		a.shootPea(window);
 		
 		sun.draw(window);
@@ -124,5 +125,6 @@ int main()
 
 		window.display();
 	}
+
 	return 0;
 }

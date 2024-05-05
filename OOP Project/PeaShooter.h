@@ -21,8 +21,8 @@ public:
 
 PeaShooter::PeaShooter(): ShootingPlant(100) 
 {
-	if (!texture.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/peashooter.gif")) {
-		cerr << "Failed to load texture: " << "C:/Users/DELL/source/repos/OOP Project/Images/peashooter.gif" << endl;
+	if (!texture.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/peashooter.png")) {
+		cerr << "Failed to load texture: " << "C:/Users/DELL/source/repos/OOP Project/Images/peashooter.png" << endl;
 	}
 	plantSprite.setTexture(texture);
 }
