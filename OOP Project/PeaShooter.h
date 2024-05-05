@@ -6,7 +6,6 @@
 class PeaShooter : public ShootingPlant {
 
 private:
-	//const int plantPrice;
 
 public:
 	

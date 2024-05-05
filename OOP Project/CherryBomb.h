@@ -31,6 +31,8 @@ CherryBomb::CherryBomb(): Plant(150){
 
 
 void CherryBomb::setPosition(float x, float y) {
+	posX = x;
+	posY = y;
 	plantSprite.setPosition(x, y);
 }
 

@@ -12,7 +12,7 @@ private:
 	Sprite sunSprite;
 	Texture sunTex;
 	
-	int fallSpeed;
+	float fallSpeed;
 	float posX;
 	float posY;
 	
@@ -50,12 +50,11 @@ Sun::Sun() :fallSpeed(20.0f), posX(0), posY(-100), limitCheck(false), collected(
 		//sunSprite.setTextureRect(sunRect);
 		sunSprite.setPosition(posX, posY);
 
-
 		// Randomizing x-coord of each object
 		srand(time(0));
 		int min = 400;
 		int max = 1000;
-		int random_posX = min + rand()%(max - min + 1);
+		float random_posX = min + rand()%(max - min + 1);
 		posX = random_posX;
 
 	}

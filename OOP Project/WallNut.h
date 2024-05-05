@@ -29,6 +29,8 @@ WallNut::WallNut() : Plant(50) {
 }
 
 void WallNut::setPosition(float x, float y) {
+	posX = x;
+	posY = y;
 	plantSprite.setPosition(x, y);
 }
 

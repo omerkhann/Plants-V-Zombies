@@ -25,6 +25,8 @@ SnowPeaShooter::SnowPeaShooter(): ShootingPlant(150)
 
 
 void SnowPeaShooter::setPosition(float x, float y) {
+	posX = x;
+	posY = y;
 	plantSprite.setPosition(x, y);
 }
 

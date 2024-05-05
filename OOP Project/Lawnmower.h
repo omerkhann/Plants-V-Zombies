@@ -15,7 +15,7 @@ private:
 	float posX;
 	float posY;
 
-	const int moveSpeed;
+	float moveSpeed;
 
 public:
 
@@ -63,5 +63,8 @@ void LawnMower::move() {
 	{
 		posX += moveSpeed;
 		setPosition(posX, posY);
+		if (posX >= 1300) {
+			zombieReached = false;
+		}
 	}
 }

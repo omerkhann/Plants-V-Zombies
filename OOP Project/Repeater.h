@@ -4,16 +4,10 @@
 
 class Repeater : public ShootingPlant {
 
-private:
-	//const int plantPrice;
-
 public:
 
 	// Constructor
 	Repeater(RenderWindow&);
-
-	//Getter
-	int getPrice() const;
 
 	// Other Member Functions
 	virtual void setPosition(float, float);
@@ -30,11 +24,9 @@ Repeater::Repeater(RenderWindow& window): ShootingPlant(200)
 	shootPea(window);
 }
 
-int Repeater::getPrice() const{
-	return plantPrice;
-}
-
 void Repeater::setPosition(float x, float y) {
+	posX = x;
+	posY = y;
 	plantSprite.setPosition(x, y);
 }
 

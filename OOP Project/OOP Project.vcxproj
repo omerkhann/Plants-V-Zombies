@@ -145,15 +145,19 @@
     <ClInclude Include="CherryBomb.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Lawnmower.h" />
+    <ClInclude Include="Level.h" />
+    <ClInclude Include="MainGame.h" />
     <ClInclude Include="Pea.h" />
     <ClInclude Include="PeaShooter.h" />
     <ClInclude Include="PlantFactory.h" />
     <ClInclude Include="Plant.h" />
     <ClInclude Include="Repeater.h" />
+    <ClInclude Include="Scoreboard.h" />
     <ClInclude Include="ShootingPlant.h" />
     <ClInclude Include="SnowPeaShooter.h" />
     <ClInclude Include="Sun.h" />
     <ClInclude Include="Sunflower.h" />
+    <ClInclude Include="Vector.h" />
     <ClInclude Include="WallNut.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
