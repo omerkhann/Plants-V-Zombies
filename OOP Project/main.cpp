@@ -7,8 +7,9 @@
 #include"PeaShooter.h"
 #include"Plant.h"
 #include"Sun.h"
-#include"Lawnmower.h"
 #include"Vector.h"
+#include"Level.h"
+#include"BeginnersGarden.h"
 using namespace sf;
 using namespace std;
 
@@ -57,6 +58,7 @@ int main()
 
 	// Main Game declaration
 	MainGame game;
+	game.setLvlPtr(new BeginnersGarden(1));
 
 	// Display the first screen and wait for the user to start the game
 	bool startGame = false;
@@ -67,10 +69,6 @@ int main()
 
 	Music.stop();
 
-
-	// INSTRUCTIONS SCREEN //
-	//game.createIntstructionScreen(window)
-
 	Clock timeMoney;
 	Clock clock;
 
@@ -78,11 +76,6 @@ int main()
 	PeaShooter a;
 	Sun sun;
 
-	LawnMower lawn1(300,140);
-	LawnMower lawn2(300, 240);
-	LawnMower lawn3(300, 340);
-	LawnMower lawn4(300, 440);
-	LawnMower lawn5(300, 540);
 
 	//Initializing Background Music
 	sf::Music bgMusic;
@@ -105,8 +98,12 @@ int main()
 				window.close();
 		}
 
+
+
+		game.getLvlPtr()->drawLevel(window);
+		game.getLvlPtr()->drawLawnMowers(window);
+
 		//Create a background
-		game.createBack(window);
 		game.createMap(window);
 		//window.setSize(sf::Vector2u(550, 340));
 		//window.setSize(sf::Vector2u(750, 540));
@@ -124,13 +121,6 @@ int main()
 		sun.draw(window);
 		sun.sunFall();
 
-		lawn1.draw(window);
-		lawn2.draw(window);
-		lawn3.draw(window);
-		lawn4.draw(window);
-		lawn5.draw(window);
-
-		lawn1.move();
 
 		window.display();
 	}

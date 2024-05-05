@@ -71,5 +71,14 @@
     <ClInclude Include="Scoreboard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BeginnersGarden.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ZombieOutskirts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SunflowerFields.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

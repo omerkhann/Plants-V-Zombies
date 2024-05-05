@@ -2,6 +2,7 @@
 #include<iostream>
 #include"Level.h"
 #include"Plant.h"
+#include"PlantFactory.h"
 #include"Vector.h"
 #include"Scoreboard.h"
 using namespace std;
@@ -15,6 +16,9 @@ private:
 	int playerLives;
 	Level* currLevel;
 	Scoreboard scoreBoard;
+	
+	//Clock sunClock;
+
 
 public:
 	
@@ -24,20 +28,24 @@ public:
 	//Getters
 	string getPlayerName();
 	int getPlayerLives();
+	Level* getLvlPtr();
 
 	//Setters
 	void setPlayerName(string);
-
+	void setLvlPtr(Level*);
 	//Other member functions
 	
 	//void runGameLoop()
-	void createBack(RenderWindow& window);
 	void createMap(RenderWindow& window);
 	
 	bool createMenuScreen(RenderWindow& window, const Font& font);
-	//void loadPauseScreen();
 	void loadHighScores(RenderWindow&);
-	//void loadEndScreen();
+	void loadInstructions(RenderWindow&);
+
+	//void showScoreBoard(RenderWindow&)
+	//void loadEndScreen(RenderWindow&);
+	//void loadPauseScreen(RenderWindow&);
+
 
 };
 
@@ -46,57 +54,14 @@ public:
 MainGame::MainGame():playerName("X"), playerLives(3), currLevel(NULL){}
 
 // Getters
-int MainGame::getPlayerLives() {
-	return playerLives;
-}
-
-string MainGame::getPlayerName() {
-	return playerName;
-}
+int MainGame::getPlayerLives() {return playerLives;}
+string MainGame::getPlayerName() {return playerName;}
+Level* MainGame::getLvlPtr() { return currLevel; }
 
 // Setters
-void MainGame::setPlayerName(string name) {
-	playerName = name;
-}
+void MainGame::setPlayerName(string name) { playerName = name;}
+void MainGame::setLvlPtr(Level* setPtr) { currLevel = setPtr; }
 
-
-
-// Drawing the background
-void MainGame::createBack(RenderWindow& window) {
-
-	Image map_image;
-	map_image.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/Frontyard.png");
-	Texture map;
-	map.loadFromImage(map_image);
-	Sprite s_map;
-	s_map.setTexture(map);
-	s_map.setPosition(0, 0);
-	window.draw(s_map);
-
-
-	sf::Texture sFbuttonTex;
-	sf::Sprite sFbutton;
-	sFbuttonTex.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/img1.png");
-	sFbutton.setTexture(sFbuttonTex);
-	sFbutton.setPosition(0, 0);
-
-	sf::Texture peabuttontex;
-	sf::Sprite PSbutton;
-	peabuttontex.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/img3.png");
-	PSbutton.setTexture(peabuttontex);
-	PSbutton.setPosition(0, 68);
-
-	sf::Texture RPbuttontex;
-	sf::Sprite RPbutton;
-	RPbuttontex.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Images/img4.png");
-	RPbutton.setTexture(sFbuttonTex);
-	RPbutton.setPosition(0, 136);
-
-	window.draw(sFbutton);
-	window.draw(PSbutton);
-	window.draw(RPbutton);
-
-}
 
 // Drawing the map
 void MainGame::createMap(RenderWindow& window) {
@@ -137,6 +102,11 @@ bool MainGame::createMenuScreen(RenderWindow& window, const Font& font) {
 	startButton.setPosition(650, 500);
 	window.draw(startButton);
 
+	Text instrucButton("INSTRUCTIONS", font, 50);
+	instrucButton.setFillColor(Color::Green);
+	instrucButton.setPosition(650, 300);
+	window.draw(instrucButton);
+
 	// Calculate button dimensions
 	string scoreButtonText = scoreButton.getString();
 	double scoreButtonWidth = scoreButtonText.length() * scoreButton.getCharacterSize() * 0.6;
@@ -145,6 +115,10 @@ bool MainGame::createMenuScreen(RenderWindow& window, const Font& font) {
 	string startButtonText = startButton.getString();
 	double startButtonWidth = startButtonText.length() * startButton.getCharacterSize() * 0.6;
 	double startButtonHeight = startButton.getCharacterSize() * 1.2;
+
+	string instrucButtonText = instrucButton.getString();
+	double instrucButtonTextWidth = instrucButtonText.length() * instrucButton.getCharacterSize() * 0.6;
+	double instrucButtonTextHeight = instrucButton.getCharacterSize() * 1.2;
 
 	window.display();
 
@@ -164,11 +138,17 @@ bool MainGame::createMenuScreen(RenderWindow& window, const Font& font) {
 			}
 		}
 	}
-
 	return false;
 }
 
 
+// Displays High Scores
 void MainGame::loadHighScores(RenderWindow& window) {
 	return;
 }
+
+// Displays Instruction Screen
+void MainGame::loadInstructions(RenderWindow& window) {
+	return;
+}
+
