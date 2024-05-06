@@ -27,21 +27,6 @@ int main()
 	}
 	window.setIcon(32, 32, icon.getPixelsPtr());
 
-	//Game field (5*9)
-	//Point 137*79 - leftmost point
-	//length 41; width 53
-	const int ROWS = 5;
-	const int COLS = 9;
-
-	bool FIELD_GAME_STATUS[ROWS][COLS];
-
-	for (int i = 0; i < ROWS; i++) {
-    		for (int j = 0; j < COLS; j++) {
-        		FIELD_GAME_STATUS[i][j] = true;
-    		}
-	}
-
-
 	// Load font
 	Font font;
 	if (!font.loadFromFile("C:/Users/DELL/source/repos/OOP Project/Fonts/arial.otf")) {
@@ -77,6 +62,10 @@ int main()
 	Sun sun;
 
 
+	GameState currentState = GameState::SelectingPlant;
+	Plant* selectedPlant = nullptr;
+
+
 	//Initializing Background Music
 	sf::Music bgMusic;
 	bgMusic.openFromFile("C:/Users/DELL/source/repos/OOP Project/Audios/bgmusic.mp3");
@@ -92,22 +81,25 @@ int main()
 		time = time / 800;
 
 		Event event;
+		
 		while (window.pollEvent(event))
 		{
 			if (event.type == Event::Closed)
 				window.close();
+
+			if (currentState == GameState::SelectingPlant) {
+				game.getLvlPtr()->handlePlantSelection(window, event, currentState, selectedPlant);
+			}
+			else if (currentState == GameState::PlacingPlant) {
+				game.getLvlPtr()->handlePlantPlacement(window, event, currentState, selectedPlant);
+			}
 		}
 
-
-		game.getLvlPtr()->handlePlantSelection(window);
 		game.getLvlPtr()->drawLevel(window);
 		game.getLvlPtr()->drawLawnMowers(window);
 		game.getLvlPtr()->drawPlants(window);
 
 		//Create a background
-		//game.createMap(window);
-		//window.setSize(sf::Vector2u(550, 340));
-		//window.setSize(sf::Vector2u(750, 540));
 		window.setSize(sf::Vector2u(1200, 700));
 		
 		

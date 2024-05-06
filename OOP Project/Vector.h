@@ -16,3 +16,9 @@ struct coordinates {
 	}
 
 };
+
+
+enum class GameState {
+	SelectingPlant,
+	PlacingPlant
+};

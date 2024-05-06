@@ -32,7 +32,7 @@ public:
 
 
 // Constructor
-PlantFactory::PlantFactory(int size = 5) : size(size), current(0) 
+PlantFactory::PlantFactory(int size = 10) : size(size), current(0) 
 {
 	ptr = new Plant* [size];
 }

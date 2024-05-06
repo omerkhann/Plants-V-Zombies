@@ -62,4 +62,5 @@ void SunFlower::setPosition(float x, float y) {
 
 void SunFlower::draw(RenderWindow& window) {
 	window.draw(plantSprite);
+	update(window);
 }
