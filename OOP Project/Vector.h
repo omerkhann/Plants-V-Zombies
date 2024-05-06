@@ -1,5 +1,3 @@
-// Our own coordinate-keeping 
-
 #pragma once
 #include"SFML/Graphics.hpp"
 #include<iostream>
@@ -17,8 +15,12 @@ struct coordinates {
 
 };
 
-
 enum class GameState {
 	SelectingPlant,
 	PlacingPlant
+};
+
+enum class sunState {
+	dropped,
+	picked
 };

@@ -45,6 +45,10 @@ int main()
 	MainGame game;
 	game.setLvlPtr(new BeginnersGarden(1));
 
+	bool level1 = true;
+	bool level2 = false;
+	bool level3 = false;
+
 	// Display the first screen and wait for the user to start the game
 	bool startGame = false;
 	while (!startGame && window.isOpen()) {
@@ -74,48 +78,52 @@ int main()
 
 	while (window.isOpen())
 	{
+	
 		float time = clock.getElapsedTime().asMicroseconds();
 		float moneyTime = timeMoney.getElapsedTime().asSeconds();
 
 		clock.restart();
 		time = time / 800;
 
+
 		Event event;
-		
-		while (window.pollEvent(event))
-		{
-			if (event.type == Event::Closed)
-				window.close();
 
-			if (currentState == GameState::SelectingPlant) {
-				game.getLvlPtr()->handlePlantSelection(window, event, currentState, selectedPlant);
+		while (level1) {
+
+			while (window.pollEvent(event))
+			{
+				if (event.type == Event::Closed)
+					window.close();
+
+				if (currentState == GameState::SelectingPlant) {
+					game.getLvlPtr()->handlePlantSelection(window, event, currentState, selectedPlant);
+				}
+				else if (currentState == GameState::PlacingPlant) {
+					game.getLvlPtr()->handlePlantPlacement(window, event, currentState, selectedPlant);
+				}
 			}
-			else if (currentState == GameState::PlacingPlant) {
-				game.getLvlPtr()->handlePlantPlacement(window, event, currentState, selectedPlant);
-			}
+
+			game.getLvlPtr()->drawLevel(window);
+			game.getLvlPtr()->drawLawnMowers(window);
+			game.getLvlPtr()->drawPlants(window);
+
+
+			//Create a background
+			window.setSize(sf::Vector2u(1200, 700));
+
+			//SunFlower.draw(window);
+			//SunFlower.setPosition(400, 200);
+			//SunFlower.update(window);
+
+			//a.draw(window);
+			//a.setPosition(480, 80);
+			//a.shootPea(window);
+
+			sun.draw(window);
+			sun.sunFall();
+
+			window.display();
 		}
-
-		game.getLvlPtr()->drawLevel(window);
-		game.getLvlPtr()->drawLawnMowers(window);
-		game.getLvlPtr()->drawPlants(window);
-
-		//Create a background
-		window.setSize(sf::Vector2u(1200, 700));
-		
-		
-		SunFlower.draw(window);
-		SunFlower.setPosition(400, 200);
-		SunFlower.update(window);
-
-		a.draw(window);
-		a.setPosition(480, 80);
-		a.shootPea(window);
-		
-		sun.draw(window);
-		sun.sunFall();
-
-
-		window.display();
 	}
 
 	return 0;

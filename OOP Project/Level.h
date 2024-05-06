@@ -67,12 +67,12 @@ void Level::handlePlantSelection(RenderWindow& window, const sf::Event& event, G
 		sf::FloatRect peaShooterButtonRect(0, 68, 107, 67);
 
 		if (sunflowerButtonRect.contains(mousePos.x, mousePos.y)) {
-			delete selectedPlant; // Safely delete the previous plant
-			selectedPlant = new SunFlower();  // Managing memory
+			delete selectedPlant; 
+			selectedPlant = new SunFlower(); 
 			currentState = GameState::PlacingPlant;
 		}
 		else if (peaShooterButtonRect.contains(mousePos.x, mousePos.y)) {
-			delete selectedPlant; // Safely delete the previous plant
+			delete selectedPlant; 
 			selectedPlant = new PeaShooter();
 			currentState = GameState::PlacingPlant;
 		}
@@ -83,11 +83,13 @@ void Level::handlePlantSelection(RenderWindow& window, const sf::Event& event, G
 void Level::handlePlantPlacement(RenderWindow& window, const sf::Event& event, GameState& currentState, Plant*& selectedPlant) {
 	if (currentState == GameState::PlacingPlant && event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
 		sf::Vector2i mousePos = sf::Mouse::getPosition(window);
-		selectedPlant->setPosition(mousePos.x, mousePos.y);
-		plantFactory.addPlant(selectedPlant); // Add plant to the plant factory
+		selectedPlant->setPosition(mousePos.x-53, mousePos.y-34);
+		plantFactory.addPlant(selectedPlant); 
+		
 		cout << "Plant placed at: " << mousePos.x << ", " << mousePos.y << endl;
-		currentState = GameState::SelectingPlant; // Reset state to allow for new plant selection
-		selectedPlant = nullptr; // Reset selected plant
+		
+		currentState = GameState::SelectingPlant; 
+		selectedPlant = nullptr; 
 	}
 }
 
