@@ -16,6 +16,7 @@ public:
 	virtual void setPosition(float, float);
 	virtual void draw(RenderWindow&);
 	virtual void shootPea(RenderWindow&);
+	void update(RenderWindow&);
 };
 
 
@@ -35,10 +36,15 @@ void PeaShooter::setPosition(float x, float y) {
 
 void PeaShooter::draw(RenderWindow& window) {
 	window.draw(plantSprite);
+	shootPea(window);
 }
 
 void PeaShooter::shootPea(RenderWindow& window) {
 	Pea pea(posX, posY);
 	pea.draw(window);
 	pea.movePea();
+}
+
+void PeaShooter::update(RenderWindow& window) {
+	shootPea(window);
 }

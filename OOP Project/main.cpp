@@ -88,7 +88,7 @@ int main()
 
 		Event event;
 
-		while (level1) {
+		while (level1 /*&& game.getLvlPtr()->getLvl() == 1*/) {
 
 			while (window.pollEvent(event))
 			{
@@ -106,6 +106,7 @@ int main()
 			game.getLvlPtr()->drawLevel(window);
 			game.getLvlPtr()->drawLawnMowers(window);
 			game.getLvlPtr()->drawPlants(window);
+			//game.getLvlPtr()->getPlantFactory().runPlants(window);
 
 
 			//Create a background

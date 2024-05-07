@@ -10,7 +10,9 @@ struct coordinates {
 	float y;
 
 	coordinates convertToCoordinates(const Vector2i& vec) {
-		return { static_cast<float>(vec.x), static_cast<float>(vec.y) };
+		//return { static_cast<float>(vec.x), static_cast<float>(vec.y) };
+		return { (float)(vec.x), (float)(vec.y) };
+
 	}
 
 };

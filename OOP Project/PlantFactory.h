@@ -23,6 +23,7 @@ public:
 	// Other Functions
 	void addPlant(Plant*);
 	void drawPlant(RenderWindow&);
+	
 	Plant* operator[](int);
 
 	// Destructor
@@ -56,6 +57,13 @@ void PlantFactory::drawPlant(RenderWindow& window) {
 		}
 	}
 }
+
+//void PlantFactory::runPlants(RenderWindow& window) {
+//	for (int i = 0; i < size; i++) {
+//		ptr[i]->update(window);
+//	}
+//}
+
 
 Plant* PlantFactory::operator[](int index) {
 	if (index >= 0 && index < current) {

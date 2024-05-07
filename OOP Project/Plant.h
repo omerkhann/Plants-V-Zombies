@@ -36,6 +36,7 @@ public:
 	//Other Member Functions
 	virtual void setPosition(float, float) = 0;
 	virtual void draw(RenderWindow&) = 0;
+	virtual void update(RenderWindow&) = 0;
 
 };
 

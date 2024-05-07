@@ -38,7 +38,7 @@ SunFlower::SunFlower() : Plant(100)
 
 // Other Member Functions
 void SunFlower::update(RenderWindow& window) {
-	if (sunProductionTime.getElapsedTime().asSeconds() >= 10) {
+	if (sunProductionTime.getElapsedTime().asSeconds() == 10) {
 		makeSun(window);
 		sunProductionTime.restart();
 	}
