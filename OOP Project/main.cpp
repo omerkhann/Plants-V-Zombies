@@ -56,19 +56,15 @@ int main()
 		sf::sleep(sf::milliseconds(100)); // Sleep to reduce CPU usage
 	}
 
+	Sun sun;
+
 	Music.stop();
 
 	Clock timeMoney;
 	Clock clock;
 
-	SunFlower SunFlower;
-	PeaShooter a;
-	Sun sun;
-
-
 	GameState currentState = GameState::SelectingPlant;
 	Plant* selectedPlant = nullptr;
-
 
 	//Initializing Background Music
 	sf::Music bgMusic;
@@ -84,8 +80,7 @@ int main()
 
 		clock.restart();
 		time = time / 800;
-
-
+		
 		Event event;
 
 		while (level1 /*&& game.getLvlPtr()->getLvl() == 1*/) {
@@ -106,22 +101,17 @@ int main()
 			game.getLvlPtr()->drawLevel(window);
 			game.getLvlPtr()->drawLawnMowers(window);
 			game.getLvlPtr()->drawPlants(window);
-			//game.getLvlPtr()->getPlantFactory().runPlants(window);
+			game.getLvlPtr()->getScoreBoard().drawBoard(window);
 
+			//game.getLvlPtr()->getPlantFactory().runPlants(window);
+			game.getLvlPtr()->getScoreBoard().setScore(100);
 
 			//Create a background
 			window.setSize(sf::Vector2u(1200, 700));
 
-			//SunFlower.draw(window);
-			//SunFlower.setPosition(400, 200);
-			//SunFlower.update(window);
-
-			//a.draw(window);
-			//a.setPosition(480, 80);
-			//a.shootPea(window);
-
 			sun.draw(window);
 			sun.sunFall();
+
 
 			window.display();
 		}

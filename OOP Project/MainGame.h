@@ -15,7 +15,7 @@ private:
 	string playerName;
 	int playerLives;
 	Level* currLevel;
-	Scoreboard scoreBoard;
+	//Scoreboard scoreBoard;
 
 public:
 	
@@ -26,6 +26,7 @@ public:
 	string getPlayerName();
 	int getPlayerLives();
 	Level* getLvlPtr();
+	//Scoreboard getScoreBoard();
 
 	//Setters
 	void setLives(int);
@@ -56,6 +57,7 @@ MainGame::MainGame():playerName("X"), playerLives(3), currLevel(NULL){}
 int MainGame::getPlayerLives() {return playerLives;}
 string MainGame::getPlayerName() {return playerName;}
 Level* MainGame::getLvlPtr() { return currLevel; }
+//Scoreboard MainGame::getScoreBoard() { return scoreBoard; }
 
 // Setters
 void MainGame::setLives(int live) { playerLives = live; }

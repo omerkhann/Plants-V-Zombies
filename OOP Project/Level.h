@@ -2,6 +2,7 @@
 #include<iostream>
 #include"Inventory.h"
 #include"PlantFactory.h"
+#include"Scoreboard.h"
 #include"Lawnmower.h"
 #include"Sunflower.h"
 #include"PeaShooter.h"
@@ -18,7 +19,7 @@ protected:
 	int levelNumber;
 
 	/*Inventory levelInventory;*/
-	
+	Scoreboard scoreBoard;
 	PlantFactory plantFactory;
 	Image lvlImage;
 	Texture lvlTex;
@@ -31,13 +32,13 @@ public:
 
 	//Getters
 	PlantFactory& getPlantFactory();
+	Scoreboard getScoreBoard();
 
 	// Setters
 
 
 	// Other Member Functions
 	virtual void drawLevel(RenderWindow&) = 0; // Purely virtual. Each level will have different backgrounds to load, different buttons to show. 
-	
 
 	void handlePlantSelection(RenderWindow& window, const sf::Event& event, GameState& currentState, Plant*& selectedPlant); 
 	void handlePlantPlacement(RenderWindow& window, const sf::Event& event, GameState& currentState, Plant*& selectedPlant);
@@ -59,6 +60,7 @@ Level::Level(int level = 0) : levelNumber(level){}
 PlantFactory& Level::getPlantFactory() {
 	return plantFactory;
 }
+Scoreboard Level::getScoreBoard() { return scoreBoard; }
 
 // Setters
 
